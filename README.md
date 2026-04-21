@@ -12,9 +12,7 @@ The main goal is to investigate how neural networks behave in regimes with bound
 
 ### 1. Smooth ODE
 We consider the simple problem:
-\[
-y'(x) = x, \quad x \in [0,1], \quad y(0)=0
-\]
+$y'(x) = x, \quad x \in [0,1], \quad y(0)=0$
 with exact solution:
 \[
 y(x) = \frac{x^2}{2}
