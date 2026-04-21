@@ -17,9 +17,16 @@ torch.set_default_dtype(torch.float64)
 #     return torch.ones_like(x)
 
 # def u_exact(x, eps):
-#     outer = torch.exp(-x)/(1 - eps**2)
-#     A = -outer[0]
-#     B = -outer[-1]
+#     if not torch.is_tensor(eps):
+#         eps = torch.tensor(eps, dtype=x.dtype, device=x.device)
+#     outer = torch.exp(-x) / (1 - eps**2)
+
+#     E = torch.exp(-1.0/eps)
+
+#     # Solve the correct linear system
+#     A = (-outer[0] + outer[-1]*E) / (1 - E**2)
+#     B = (-outer[-1] + outer[0]*E) / (1 - E**2)
+
 #     return outer + A*torch.exp(-x/eps) + B*torch.exp(-(1-x)/eps)
 
 
